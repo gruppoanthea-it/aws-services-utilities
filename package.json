@@ -1,0 +1,14 @@
+{
+  "name": "aws-services-utilities",
+  "version": "1.0.1",
+  "description": "AWS SDK functions and generic utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dario Cristini <dario.cristini@gmail.com> (https://github.com/DarX098)",
+  "license": "ISC",
+  "dependencies": {
+    "dynamodb-doc": "^1.0.0"
+  }
+}
