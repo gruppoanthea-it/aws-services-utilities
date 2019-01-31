@@ -1,6 +1,6 @@
 'use strict';
 
-const AWS = require('./libraries/aws-sdk-2.395.0.min.js');
+const AWS = require('aws-sdk');
 const s3 = new AWS.S3();
 const sns = new AWS.SNS();
 const sqs = new AWS.SQS();
