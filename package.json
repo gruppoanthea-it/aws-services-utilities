@@ -1,5 +1,5 @@
 {
-  "name": "aws-services-utilities",
+  "name": "@gruppoanthea/aws-services-utilities",
   "version": "1.0.1",
   "description": "AWS SDK functions and generic utility",
   "main": "index.js",
@@ -10,5 +10,14 @@
   "license": "ISC",
   "dependencies": {
     "dynamodb-doc": "^1.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gruppoanthea-it/aws-services-utilities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gruppoanthea-it/aws-services-utilities/issues"
+  },
+  "homepage": "https://github.com/gruppoanthea-it/aws-services-utilities#readme"
 }
