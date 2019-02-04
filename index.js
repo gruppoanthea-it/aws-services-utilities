@@ -60,23 +60,26 @@ exports.dynamoDbQuery = function (tableName, attributes, callback) {
   };
 
   attributes.forEach(element => {
+    params.ExpressionAttributeNames[`#${element.AttributeName}`] = element.AttributeName;
+    params.ExpressionAttributeValues[`:${element.AttributeName}`] = element.AttributeValue;
+
     switch (element.AttributeCondition) {
       case 'equals':
         if (params.KeyConditionExpression === null) {
-          params.KeyConditionExpression = `#${element.AttributeName} = :${element.AttributeValue}`;
+          params.KeyConditionExpression = `#${element.AttributeName} = :${element.AttributeName}`;
         } else {
-          params.KeyConditionExpression += `AND #${element.AttributeName} = :${element.AttributeValue}`;
+          params.KeyConditionExpression += ` AND #${element.AttributeName} = :${element.AttributeName}`;
         }
         break;
-      
+
       case 'begins_with':
         if (params.KeyConditionExpression === null) {
-          params.KeyConditionExpression = `begins_with(#${element.AttributeName}, :${element.AttributeValue})`;
+          params.KeyConditionExpression = `begins_with(#${element.AttributeName}, :${element.AttributeName})`;
         } else {
-          params.KeyConditionExpression += `AND begins_with(#${element.AttributeName}, :${element.AttributeValue})`;
+          params.KeyConditionExpression += ` AND begins_with(#${element.AttributeName}, :${element.AttributeName})`;
         }
         break;
-    
+
       default:
         break;
     }
@@ -86,7 +89,7 @@ exports.dynamoDbQuery = function (tableName, attributes, callback) {
     if (err) {
       callback('Unable to scan DynamoDB Error:', JSON.stringify(err, null, 2));
     } else {
-      callback(data.Items);
+      callback(null, data.Items);
     }
   });
 }
@@ -222,7 +225,7 @@ exports.sqsSend = function (event, attributes, queueurl, callback) {
 
 // #region SNS
 
-exports.checktags = function (topicarn, item, callback) {
+exports.snsSend = function (topicarn, item, callback) {
   sns.publish({
     TopicArn: topicarn,
     Message: JSON.stringify(item),
@@ -290,6 +293,15 @@ exports.roughSizeOfObject = function (object) {
     }
   }
   return bytes / 1024;
+}
+
+/**
+ * Function that get unique elements in an array
+ */
+exports.unique = function (array) {
+  return array.filter(function (value, index, self) {
+    return self.indexOf(value) === index;
+  });
 }
 
 //#endregion
