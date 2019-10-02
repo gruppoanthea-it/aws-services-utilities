@@ -9,7 +9,6 @@
   "author": "Dario Cristini <dario.cristini@gmail.com> (https://github.com/DarX098)",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.395.0",
     "dynamodb-doc": "^1.0.0"
   },
   "devDependencies": {},
