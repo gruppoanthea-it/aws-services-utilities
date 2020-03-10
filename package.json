@@ -1,6 +1,6 @@
 {
   "name": "@gruppoanthea/aws-services-utilities",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "AWS SDK functions and generic utility",
   "main": "index.js",
   "scripts": {

@@ -65,7 +65,7 @@ exports.dynamoDbQuery = function (tableName, attributes, callback) {
                 if (params.KeyConditionExpression === null) {
                     params.KeyConditionExpression = `#${element.AttributeName} = :${element.AttributeValue}`;
                 } else {
-                    params.KeyConditionExpression += `AND #${element.AttributeName} = :${element.AttributeValue}`;
+                    params.KeyConditionExpression += ` AND #${element.AttributeName} = :${element.AttributeValue}`;
                 }
                 break;
 
@@ -73,7 +73,7 @@ exports.dynamoDbQuery = function (tableName, attributes, callback) {
                 if (params.KeyConditionExpression === null) {
                     params.KeyConditionExpression = `begins_with(#${element.AttributeName}, :${element.AttributeValue})`;
                 } else {
-                    params.KeyConditionExpression += `AND begins_with(#${element.AttributeName}, :${element.AttributeValue})`;
+                    params.KeyConditionExpression += ` AND begins_with(#${element.AttributeName}, :${element.AttributeValue})`;
                 }
                 break;
 
